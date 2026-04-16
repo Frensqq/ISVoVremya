@@ -1,18 +1,19 @@
 ﻿using ISVoVremya.Models;
+using YamlDotNet.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ISVoVremya.Formatters;
-public class CsvFormatter : IReportFormatter
+public class YamlFormatter : IReportFormatter
 {
     public string Format(WorksReport report)
     {
-        // Разделитель ; (для csv)
-        return $"{report.id};{report.employeeId};{report.date};" +
-               $"{report.hoursWorked};{report.overtimeHours};" +
-               $"{report.lateMinutes};{report.status}";
+        var serializer = new SerializerBuilder().Build();
+        return serializer.Serialize(report);
     }
 }

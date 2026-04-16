@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ISVoVremya.SaveReports
 {
-    internal interface IReportSave
+    public interface IReportSave
     {
-        void SaveStringToFile(WorksSession session);
+        void SaveStringToFile(string formatterData, string filePath);
     }
 }

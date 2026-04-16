@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISVoVremya.ReportLogic
 {
-    interface IReportCalculator
+    public interface IReportCalculator
     {
         WorksReport Calculate(WorksSession session);
     }
