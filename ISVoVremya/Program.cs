@@ -9,39 +9,80 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== ИС «ВоВремя» — Генерация отчёта о рабочем времени ===\n");
-
-        var session = new WorksSession(
-            id: 1,                          // ID сессии
-            employeeId: 101,                // ID сотрудника
-            date: new DateOnly(2024, 1, 15), // Дата
-            startWork: new TimeSpan(9,15, 0),   // Фактический приход (опоздал на 20 мин)
-            endWork: new TimeSpan(19, 30, 0),    // Фактический уход (переработка 1.5 ч)
-            breaks: 1.0,                    // Перерыв 1 час
-            startWorkPlaned: new TimeSpan(9, 0, 0),  // Плановое начало
-            endWorkPlaned: new TimeSpan(17, 0, 0)    // Плановое окончание
-        );
-
-        IReportFormatter formatter = new JsonFormatter();  
+        Console.WriteLine("ИС «ВоВремя» — Генерация отчётов\n");
 
         IReportCalculator calculator = new ReportCalculator();
         IReportSave saver = new ReportSave();
 
-        ReportGenerator generator = new ReportGenerator(calculator, formatter, saver);
+        // Выбор формата отчёта
+        Console.WriteLine("Выберите формат отчёта:");
+        Console.WriteLine("1 - JSON");
+        Console.WriteLine("2 - YAML");
+        Console.WriteLine("3 - CSV");
+        Console.Write("Ваш выбор (1-3): ");
 
-        string filePath = "report.json"; 
+        string? choice = Console.ReadLine();
 
-        generator.GenerateAndSave(session, filePath);
+        IReportFormatter formatter;
+        string extension;
 
-
-        Console.WriteLine("\n--- Содержимое файла ---");
-        if (File.Exists(filePath))
+        switch (choice)
         {
-            string content = File.ReadAllText(filePath);
-            Console.WriteLine(content);
+            case "2":
+                formatter = new YamlFormatter();
+                extension = ".yaml";
+                break;
+            case "3":
+                formatter = new CsvFormatter();
+                extension = ".csv";
+                break;
+            default:
+                formatter = new JsonFormatter();
+                extension = ".json";
+                break;
         }
 
-        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.WriteLine($"\nВыбран формат: {extension.ToUpper().Replace(".", "")}\n");
+
+        
+        ReportGenerator generator = new ReportGenerator(calculator, formatter, saver);
+
+        //Тестовые данные
+        var session = new WorksSession(
+            1, 101, new DateOnly(2024, 1, 15),
+            new TimeSpan(9, 20, 0),  
+            new TimeSpan(19, 30, 0),  
+            1.0,                      
+            new TimeSpan(9, 0, 0),   
+            new TimeSpan(18, 0, 0)    
+        );
+
+        //Ввод пути для сохранения файла
+        Console.Write("Введите путь для сохранения отчёта (без расширения): ");
+        string? filePathWithoutExt = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(filePathWithoutExt))
+        {
+            filePathWithoutExt = "report";
+            Console.WriteLine($"Путь не указан, используем: {filePathWithoutExt}");
+        }
+
+        string filePath = filePathWithoutExt + extension;
+
+        // Сохранение отчёта
+        generator.GenerateAndSave(session, filePath);
+
+        Console.WriteLine($"\n--- Содержимое {filePath} ---");
+        if (File.Exists(filePath))
+        {
+            Console.WriteLine(File.ReadAllText(filePath));
+        }
+        else
+        {
+            Console.WriteLine("Файл не найден!");
+        }
+
+        Console.WriteLine("\nНажмите любую клавишу...");
         Console.ReadKey();
     }
 }

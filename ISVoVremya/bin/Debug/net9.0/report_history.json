@@ -1,0 +1,4 @@
+﻿{"id":3,"employeeId":101,"date":"2024-01-17","hoursWorked":8.25,"overtimeHours":0.2,"lateMinutes":45.0,"status":"Completed"}
+{"id":1,"employeeId":101,"date":"2024-01-15","hoursWorked":9.17,"overtimeHours":1.2,"lateMinutes":20.0,"status":"Completed"}
+{"id":2,"employeeId":101,"date":"2024-01-16","hoursWorked":8.5,"overtimeHours":0.5,"lateMinutes":0.0,"status":"Completed"}
+{"id":3,"employeeId":101,"date":"2024-01-17","hoursWorked":8.25,"overtimeHours":0.2,"lateMinutes":45.0,"status":"Completed"}

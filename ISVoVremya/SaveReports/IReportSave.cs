@@ -10,5 +10,7 @@ namespace ISVoVremya.SaveReports
     public interface IReportSave
     {
         void SaveStringToFile(string formatterData, string filePath);
+
+        void AppendStringToFile(string formatterData, string filePath);
     }
 }

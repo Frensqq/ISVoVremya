@@ -13,5 +13,16 @@ namespace ISVoVremya.SaveReports
             File.WriteAllTextAsync( filePath, formatterDate, Encoding.UTF8);
 
         }
+
+        public void AppendStringToFile(string content, string filePath)
+        {
+            // Добавляем перенос строки
+            if (File.Exists(filePath) && !string.IsNullOrEmpty(File.ReadAllText(filePath)))
+            {
+                content = Environment.NewLine + content;
+            }
+
+            File.AppendAllText(filePath, content, Encoding.UTF8);
+        }
     }
 }

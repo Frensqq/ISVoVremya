@@ -1,15 +1,7 @@
-﻿using ISVoVremya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ISVoVremya.ReportLogic;
-
-using global::ISVoVremya.Formatters;
-using global::ISVoVremya.SaveReports;
-
+﻿using ISVoVremya.Formatters;
+using ISVoVremya.Models;
+using ISVoVremya.ReportLogic;
+using ISVoVremya.SaveReports;
 
 public class ReportGenerator
 {
@@ -17,7 +9,6 @@ public class ReportGenerator
     private readonly IReportFormatter _formatter;
     private readonly IReportSave _saver;
 
-    // Конструктор для внедрения зависимостей (DIP)
     public ReportGenerator(
         IReportCalculator calculator,
         IReportFormatter formatter,
@@ -28,21 +19,23 @@ public class ReportGenerator
         _saver = saver;
     }
 
-    // Основной метод: принимает сырые данные и путь к файлу
-    public void GenerateAndSave(WorksSession sessionData, string filePath)
+    // Перезапись файла
+    public void GenerateAndSave(WorksSession data, string filePath)
     {
-        // 1. Рассчёт отчёта
-        WorksReport report = _calculator.Calculate(sessionData);
+        WorksReport report = _calculator.Calculate(data);
+        string formattedData = _formatter.Format(report);
+        _saver.SaveStringToFile(formattedData, filePath);
 
-        // 2. Форматирование в нужный тип
-        string formattedContent = _formatter.Format(report);
+        Console.WriteLine($"Отчёт сохранён (перезапись): {filePath}");
+    }
 
-        // 3. Сохранение в файл
-        _saver.SaveStringToFile(formattedContent, filePath);
+    //  Дозапись в файл
+    public void GenerateAndAppend(WorksSession data, string filePath)
+    {
+        WorksReport report = _calculator.Calculate(data);
+        string formattedData = _formatter.Format(report);
+        _saver.AppendStringToFile(formattedData, filePath);
 
-        // 4. Вывод в консоль (опционально, для обратной связи)
-        Console.WriteLine($"Отчёт сохранён в файл: {filePath}");
-        Console.WriteLine($"Сотрудник: {sessionData.employeeId}, Дата: {sessionData.date}");
-        Console.WriteLine($"Отработано: {report.hoursWorked} ч., Опоздание: {report.lateMinutes} мин.");
+        Console.WriteLine($"Отчёт добавлен в файл: {filePath}");
     }
 }
