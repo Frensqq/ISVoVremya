@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "cYFIeu6ds1c=",
+  "dgSpecHash": "0TXjogmzZyQ=",
   "success": true,
   "projectFilePath": "W:\\Colledge\\02.01\\ISVoVremya\\ISVoVremya\\ISVoVremya.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Frens__\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\yamldotnet\\17.0.1\\yamldotnet.17.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
