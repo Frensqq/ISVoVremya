@@ -72,7 +72,7 @@ class Program
         // Сохранение отчёта
         generator.GenerateAndSave(session, filePath);
 
-        Console.WriteLine($"\n--- Содержимое {filePath} ---");
+        Console.WriteLine($"\nСодержимое {filePath}");
         if (File.Exists(filePath))
         {
             Console.WriteLine(File.ReadAllText(filePath));

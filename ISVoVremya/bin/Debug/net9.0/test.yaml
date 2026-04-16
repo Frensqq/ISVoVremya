@@ -1,0 +1,13 @@
+﻿id: 1
+employeeId: 101
+date:
+  Year: 2024
+  Month: 1
+  Day: 15
+  DayOfWeek: Monday
+  DayOfYear: 15
+  DayNumber: 738899
+hoursWorked: 9.17
+overtimeHours: 1.2
+lateMinutes: 20
+status: Completed

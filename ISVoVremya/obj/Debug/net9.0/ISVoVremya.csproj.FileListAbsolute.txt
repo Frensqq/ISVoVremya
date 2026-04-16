@@ -16,3 +16,4 @@ W:\Colledge\02.01\ISVoVremya\ISVoVremya\obj\Debug\net9.0\refint\ISVoVremya.dll
 W:\Colledge\02.01\ISVoVremya\ISVoVremya\obj\Debug\net9.0\ISVoVremya.pdb
 W:\Colledge\02.01\ISVoVremya\ISVoVremya\obj\Debug\net9.0\ISVoVremya.genruntimeconfig.cache
 W:\Colledge\02.01\ISVoVremya\ISVoVremya\obj\Debug\net9.0\ref\ISVoVremya.dll
+W:\Colledge\02.01\ISVoVremya\ISVoVremya\obj\Debug\net9.0\ISVoVremya.sourcelink.json
