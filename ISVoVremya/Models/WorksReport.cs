@@ -9,14 +9,14 @@ namespace ISVoVremya.Models;
 public class WorksReport
 {
     public int id { get; set; }
-    public string employeeId { get; set; }
+    public int employeeId { get; set; }
     public DateOnly date { get; set; }
     public double hoursWorked { get; set; }
     public double overtimeHours { get; set; }
-    public int lateMinutes { get; set; }
+    public double lateMinutes { get; set; }
     public string status { get; set; }
 
-    public WorksReport(int id, string employeeId, DateOnly date, double hoursWorked, double overtimeHours, int lateMinutes, string status)
+    public WorksReport(int id, int employeeId, DateOnly date, double hoursWorked, double overtimeHours, double lateMinutes, string status)
     {
         this.id = id;
         this.employeeId = employeeId;

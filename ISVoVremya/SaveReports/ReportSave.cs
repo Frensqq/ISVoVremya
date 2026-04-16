@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ISVoVremya.SaveReports
 {
-    internal class ReportSave
+    public class ReportSave: IReportSave
     {
+        public void SaveStringToFile(string formatterDate, string filePath) { 
+
+            File.WriteAllTextAsync( filePath, formatterDate, Encoding.UTF8);
+
+        }
     }
 }

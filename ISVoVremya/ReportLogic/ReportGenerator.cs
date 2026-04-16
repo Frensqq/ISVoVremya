@@ -1,12 +1,19 @@
-﻿using System;
+﻿using ISVoVremya.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISVoVremya.ReportLogic
+namespace ISVoVremya.ReportLogic;
+
+public class ReportGenerator
 {
-    internal class ReportGenerator
+    public void Generator(WorksSession sessionData)
     {
+
     }
+
+    
 }
+

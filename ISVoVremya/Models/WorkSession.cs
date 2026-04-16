@@ -8,16 +8,16 @@ namespace ISVoVremya.Models;
 
 public class WorksSession
 {
-    public string Id { get; set; }
-    public string employeeId { get; set; }
+    public int Id { get; set; }
+    public int employeeId { get; set; }
     public DateOnly date { get; set; }
-    public TimeOnly startWork { get; set; }
-    public TimeOnly endWork { get; set; }
+    public TimeSpan startWork { get; set; }
+    public TimeSpan endWork { get; set; }
     public double breaks { get; set; }
-    public TimeOnly startWorkPlaned { get; set; }
-    public TimeOnly endWorkPlaned { get; set; }
+    public TimeSpan startWorkPlaned { get; set; }
+    public TimeSpan endWorkPlaned { get; set; }
 
-    public WorksSession(string id, string employeeId, DateOnly date, TimeOnly startWork, TimeOnly endWork, double breaks, TimeOnly startWorkPlaned, TimeOnly endWorkPlaned)
+    public WorksSession(int id, int employeeId, DateOnly date, TimeSpan startWork, TimeSpan endWork, double breaks, TimeSpan startWorkPlaned, TimeSpan endWorkPlaned)
     {
         Id = id;
         this.employeeId = employeeId;

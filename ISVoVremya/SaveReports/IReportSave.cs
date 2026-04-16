@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISVoVremya.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace ISVoVremya.SaveReports
 {
     internal interface IReportSave
     {
+        void SaveStringToFile(WorksSession session);
     }
 }
